@@ -2,12 +2,12 @@
 
 import os
 
-from ament_index_python.packages import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory #type: ignore
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
-from launch.actions import LogInfo
-from launch.substitutions import LaunchConfiguration
-from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument #type: ignore
+from launch.actions import LogInfo #type: ignore
+from launch.substitutions import LaunchConfiguration #type: ignore
+from launch_ros.actions import Node #type: ignore
 
 
 def generate_launch_description():
