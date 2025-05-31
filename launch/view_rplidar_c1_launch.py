@@ -2,39 +2,28 @@
 
 import os
 
-from ament_index_python.packages import get_package_share_directory # type: ignore
+from ament_index_python.packages import get_package_share_directory  # type: ignore
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument # type: ignore
-from launch.actions import LogInfo # type: ignore
-from launch.substitutions import LaunchConfiguration # type: ignore
-from launch_ros.actions import Node # type: ignore
+from launch.actions import DeclareLaunchArgument  # type: ignore
+from launch.actions import LogInfo  # type: ignore
+from launch.substitutions import LaunchConfiguration  # type: ignore
+from launch_ros.actions import Node  # type: ignore
 
 
 def generate_launch_description():
     channel_type =  LaunchConfiguration('channel_type', default='serial')
     serial_port = LaunchConfiguration('serial_port', default='/dev/ttyUSB0')
     serial_baudrate = LaunchConfiguration('serial_baudrate', default='460800')
-    frame_id = LaunchConfiguration('frame_id', default='lidar_link') # originally 'laser', changed to 'lidar_link' to be more consistent with the rest of the code
+    frame_id = LaunchConfiguration('frame_id', default='laser')
     inverted = LaunchConfiguration('inverted', default='false')
     angle_compensate = LaunchConfiguration('angle_compensate', default='true')
     scan_mode = LaunchConfiguration('scan_mode', default='Standard')
-    scan_frequency = LaunchConfiguration('scan_frequency', default='10.0') # changed back to default value of 10.0 Hz
-    
 
-    rplidar_node = Node(
-        package='rplidar_ros',
-        executable='rplidar_node',
-        name='rplidar_node',
-        parameters=[{'channel_type':channel_type,
-                     'serial_port': serial_port,
-                     'serial_baudrate': serial_baudrate,
-                     'frame_id': frame_id,
-                     'inverted': inverted,
-                     'angle_compensate': angle_compensate,
-                     'scan_mode': scan_mode,
-                     'scan_frequency': scan_frequency, # Added scan_frequency
-                     'use_sim_time': False}],
-        output='screen')
+    rviz_config_dir = os.path.join(
+            get_package_share_directory('rplidar_ros'),
+            'rviz',
+            'rplidar_ros.rviz')
+
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -72,12 +61,24 @@ def generate_launch_description():
             default_value=scan_mode,
             description='Specifying scan mode of lidar'),
 
-        DeclareLaunchArgument( # Added scan_frequency argument
-            'scan_frequency',
-            default_value=scan_frequency,
-            description='Specifying scan frequency of lidar (Hz)'),
+        Node(
+            package='rplidar_ros',
+            executable='rplidar_node',
+            name='rplidar_node',
+            parameters=[{'channel_type':channel_type,
+                         'serial_port': serial_port,
+                         'serial_baudrate': serial_baudrate,
+                         'frame_id': frame_id,
+                         'inverted': inverted,
+                         'angle_compensate': angle_compensate,
+                           'scan_mode': scan_mode
+                         }],
+            output='screen'),
 
-        rplidar_node,
+        Node(
+            package='rviz2',
+            executable='rviz2',
+            name='rviz2',
+            arguments=['-d', rviz_config_dir],
+            output='screen'),
     ])
-
-

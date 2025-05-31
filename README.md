@@ -1,8 +1,6 @@
-# SLAMTEC LIDAR ROS2 Package
+# SLAMTEC LIDAR ROS2 Package - Pointcloud Fork
 
-ROS2 node for SLAMTEC LIDAR
-
-Visit following Website for more details about SLAMTEC LIDAR:
+ROS2 node for SLAMTEC LIDAR, used with RPLIDAR C1 
 
 SLAMTEC LIDAR roswiki: <http://wiki.ros.org/rplidar>
 
@@ -12,26 +10,9 @@ SLAMTEC LIDAR SDK: <https://github.com/Slamtec/rplidar_sdk>
 
 SLAMTEC LIDAR Tutorial: <https://github.com/robopeak/rplidar_ros/wiki>
 
-## Supported SLAMTEC LIDAR
-
-| Lidar Model |
-| ---------------------- |
-|RPLIDAR A1              |
-|RPLIDAR A2              |
-|RPLIDAR A3              |
-|RPLIDAR S1              |
-|RPLIDAR S2              |
-|RPLIDAR S2E             |
-|RPLIDAR S3              |
-|RPLIDAR T1              |
-|RPLIDAR C1              |
-
 ## How to install ROS2
 
-[rolling](https://docs.ros.org/en/rolling/Installation.html),
 [humble](https://docs.ros.org/en/humble/Installation.html),
-[galactic](https://docs.ros.org/en/galactic/Installation.html),
-[foxy](https://docs.ros.org/en/foxy/Installation.html)
 
 ## How to configuring your ROS 2 environment
 
@@ -104,71 +85,11 @@ SLAMTEC LIDAR Tutorial: <https://github.com/robopeak/rplidar_ros/wiki>
 
 ### Run rplidar node and view in the rviz
 
-The command for RPLIDAR A1 is :
 
-```bash
-ros2 launch rplidar_ros view_rplidar_a1_launch.py
-```
 
-The command for RPLIDAR A2M7 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_a2m7_launch.py
-```
-
-The command for RPLIDAR A2M8 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_a2m8_launch.py
-```
-
-The command for RPLIDAR A2M12 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_a2m12_launch.py
-```
-
-The command for RPLIDAR A3 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_a3_launch.py
-```
-
-The command for RPLIDAR S1 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_s1_launch.py
-```
 
 The command for RPLIDAR S1(TCP connection) is :
 
-```bash
-ros2 launch rplidar_ros view_rplidar_s1_tcp_launch.py
-```
-
-The command for RPLIDAR S2 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_s2_launch.py
-```
-
-The command for RPLIDAR S2E is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_s2e_launch.py
-```
-
-The command for RPLIDAR S3 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_s3_launch.py
-```
-
-The command for RPLIDAR T1 is :
-
-```bash
-ros2 launch rplidar_ros view_rplidar_t1_launch.py
-```
 
 The command for RPLIDAR C1 is :
 
