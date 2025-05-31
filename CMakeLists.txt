@@ -8,10 +8,6 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
 endif()
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
-
 if(MSVC)
   add_compile_definitions(
     _USE_MATH_DEFINES
@@ -77,6 +73,11 @@ ament_target_dependencies(rplidar_client
   std_srvs
   sensor_msgs
 )
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wno-sign-compare)
+endif()
+
 ################################################################################
 # Install
 ################################################################################
