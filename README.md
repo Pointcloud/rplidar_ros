@@ -10,6 +10,8 @@ SLAMTEC LIDAR SDK: <https://github.com/Slamtec/rplidar_sdk>
 
 SLAMTEC LIDAR Tutorial: <https://github.com/robopeak/rplidar_ros/wiki>
 
+WAVESHARE Info: https://www.waveshare.com/wiki/RPLIDAR_C1
+
 ## How to install ROS2
 
 [humble](https://docs.ros.org/en/humble/Installation.html),
